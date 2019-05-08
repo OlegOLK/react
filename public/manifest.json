@@ -1,0 +1,5 @@
+{
+  "name": "TestAppOLK",
+  "start_url": "http://localhost:3000/",
+  "description": "A simple todo app build on blockstack"
+}
