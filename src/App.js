@@ -25,6 +25,8 @@ async function handleSignIn() {
     await User.createWithCurrentUser();
   }
 }
+
+
 export default class App extends React.Component {
 
   signIn() {
