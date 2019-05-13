@@ -9,8 +9,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SignInButton from './signIn';
-import AuthService from '../services/auth.service';
 import { Portrait } from './portrait';
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Menu extends React.Component {
     constructor(props) {
@@ -21,8 +22,8 @@ class Menu extends React.Component {
         }
     }
 
-    loadUserData(){
-        const data =  this.props.userSession.loadUserData();
+    loadUserData() {
+        const data = this.props.userSession.loadUserData();
         console.log('data', data);
         return data.username;
     }
@@ -31,24 +32,23 @@ class Menu extends React.Component {
         return (
             <div>
                 <CssBaseline />
-                <AppBar position="static" color="default" className={this.state.classes.appBar}>
+                <AppBar position="static" color="default" className={this.state.classes.appBar} >
                     <Toolbar>
                         <Typography variant="h6" color="inherit" noWrap className={this.state.classes.toolbarTitle}>
-                            Company name
+                            <Link to="/" >  Project vault
+                          </Link>
                         </Typography>
-                        <Button>Features</Button>
+                        <Button>Docs</Button>
                         <Button>Enterprise</Button>
                         <Button>Support</Button>
                         {
                             !this.props.userSession.isUserSignedIn() ?
                                 <SignInButton onClick={this.props.handleSignIn} />
                                 :
-                                //<p>ppc</p>
-                                <Portrait 
-                                handleSignOut={this.props.handleSignOut}
-                                userName={this.loadUserData()}
+                                <Portrait
+                                    handleSignOut={this.props.handleSignOut}
+                                    userName={this.loadUserData()}
                                 />
-                                //<Button onClick={this.state.userSession.signUserOut()}> {this.state.userSession.loadUserData().username} </Button>
                         }
                     </Toolbar>
                 </AppBar>

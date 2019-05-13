@@ -3,6 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Application from './Application';
+import { setGlobal } from 'reactn';
+
+setGlobal({
+    rule: {
+        conditions: [],
+        actions: []
+    },
+    userProfile:{
+        avatarUrl: '',
+        userName: '',
+    },
+    ruleCreation:{
+        isAnyActiveAction:false,
+        isAnyActiveCondition: false,
+        isRuleCompleted: false
+    },
+    JCreateRule: {
+        activeStep: 0
+    }
+})
 
 ReactDOM.render(<Application />, document.getElementById('root'));
 

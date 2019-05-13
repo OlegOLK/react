@@ -1,9 +1,22 @@
-import { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import * as radiks from 'radiks'
 import { BasicRule } from '../models/basicRule';
+import { Grid } from '@material-ui/core';
+import { RuleElement } from './models/rule';
 
-class Board extends Component {
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { CreateRuleElement } from './models/createRule';
+
+
+
+const styles = {
+    board: {
+        padding: '20px'
+    }
+}
+
+export class Board extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,20 +26,56 @@ class Board extends Component {
     }
 
     async  fetchRules() {
-        return await BasicRule.fetchOwnLins()
+        try {
+            return await BasicRule.fetchOwnList();
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     componentWillMount() {
         this.fetchRules().then(fetchedRules => {
             this.setState({
-                rules: fetchedRules
+                rules: fetchedRules ? fetchedRules : Array(0)
             })
         });
     }
 
     render() {
+
+        const items = [];
+
+        this.state.rules.forEach(r => {
+            items.push(
+                <Grid container
+                    spacing={24}
+                    direction="row"
+                    justify="center"
+                    alignItems="center">
+
+                    <RuleElement rule={r} />
+                </Grid>
+            )
+        });
+
         return (
-            <RuleElement />
-        )
+            <Router>
+                <div style={styles.board}>
+                    {
+                        items
+                    }
+
+                    <Grid container
+                        spacing={24}
+                        direction="row"
+                        justify="center"
+                        alignItems="center">
+
+                        <RuleElement />
+                    </Grid>
+
+                </div>
+            </Router>
+        );
     }
 }
