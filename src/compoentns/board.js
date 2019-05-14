@@ -1,12 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import * as radiks from 'radiks'
 import { BasicRule } from '../models/basicRule';
 import { Grid } from '@material-ui/core';
 import { RuleElement } from './models/rule';
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { CreateRuleElement } from './models/createRule';
+import { BrowserRouter as Router} from "react-router-dom";
 
 
 

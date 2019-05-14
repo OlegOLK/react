@@ -1,7 +1,6 @@
 import AppBar from '@material-ui/core/AppBar';
 import React from 'react';
 import styles from '../globals/globalStyles';
-import { UserData } from 'blockstack';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
@@ -11,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import SignInButton from './signIn';
 import { Portrait } from './portrait';
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Menu extends React.Component {
     constructor(props) {

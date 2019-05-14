@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -18,11 +17,6 @@ const styles = {
 };
 
 export class RuleElement extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-
     drawEmptyElement() {
         return (
             <Card style={styles.card}>

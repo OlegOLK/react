@@ -1,4 +1,4 @@
-import { Model, User } from 'radiks';
+import { Model } from 'radiks';
 
 export class BasicRule extends Model {
     static className = 'Rule';

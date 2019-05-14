@@ -1,12 +1,10 @@
 import React from 'react';
-import { useGlobal } from 'reactn';
 import { UserSession, AppConfig } from 'blockstack';
-import { configure, getConfig, User, UserGroup } from 'radiks';
+import { configure, User } from 'radiks';
 import { Board } from './compoentns/board';
 import Menu from './compoentns/menu';
 import { Grid } from '@material-ui/core';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { CreateRuleElement } from './compoentns/models/createRule';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { JGeneralInfo } from './compoentns/jumbotron/generalInfo';
 import JCreateRule from './compoentns/jumbotron/createRule';
 import { CreateConditionElement } from './compoentns/models/createCondition';
@@ -49,7 +47,7 @@ function componentWillMount() {
 
 const Application= () => {
     
-    const mount = componentWillMount();
+    componentWillMount();
     
     return (
         <Router>

@@ -1,4 +1,4 @@
-import React, { addCallback, setGlobal } from 'reactn'; // <-- reactn
+import React, { addCallback } from 'reactn'; // <-- reactn
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -7,8 +7,6 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-
-import Glb from './hz';
 
 const styles = theme => ({
     root: {
@@ -34,27 +32,23 @@ class JCreateRule extends React.Component {
         activeStep: 0,
       };
 
-      isDisabled = false;
-    
+      isDisabled = false;   
 
       constructor(props){
           super(props);
-          let a  = this.global.ruleCreation;
-          console.log(a);
-
-         
+          const ruleCreationFromGlobal  = this.global.ruleCreation;
+           
             
           this.state = {
             activeStep: 0,
             ruleCreation: {
-                isAnyActiveCondition: a.isAnyActiveCondition,
-                isAnyActiveAction: a.isAnyActiveAction,
-                isRuleCompleted: a.isRuleCompleted
+                isAnyActiveCondition: ruleCreationFromGlobal.isAnyActiveCondition,
+                isAnyActiveAction: ruleCreationFromGlobal.isAnyActiveAction,
+                isRuleCompleted: ruleCreationFromGlobal.isRuleCompleted
             }
           }
 
           addCallback(global=>{
-            console.log('AAAAAA', global);
             this.setState({
                 ruleCreation: {
                     isAnyActiveCondition: global.ruleCreation.isAnyActiveCondition,
@@ -62,10 +56,9 @@ class JCreateRule extends React.Component {
                     isRuleCompleted: global.ruleCreation.isRuleCompleted
                 }
             });
-            //this.isDisabled = this.getDisabledState(global.ruleCreation);
 
             return null;
-            });
+          });
       }
 
       handleNext = () => {
